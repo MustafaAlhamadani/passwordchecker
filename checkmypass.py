@@ -1,3 +1,4 @@
+#PasswordChecker by MustafaAlhamadani
 import requests
 import hashlib
 import sys
@@ -6,7 +7,7 @@ def request_api_data(query_char):
   url = 'https://api.pwnedpasswords.com/range/' + query_char
   res = requests.get(url)
   if res.status_code is not 200:
-    print(f'Error fetching: {res.status_code}, check the api and try again')
+    print(f'Error occured: {res.status_code}, check the api and try again.')
   return res
 
 def get_password_leaks_count(hashes, hash_to_check):
@@ -28,9 +29,7 @@ def main(args):
     if count:
       print(f'{password} was found {count} times, you should probably change your password!')
     else:
-      print(f'{password} was NOT found, you\'re all good.')
-  return 'done!'
+      print(f'{password} was NOT found, your password is safe')
 
 if __name__ == '__main__':
   sys.exit(main(sys.argv[1:]))
-  #the exit is to make sure tha t the command line will exits
